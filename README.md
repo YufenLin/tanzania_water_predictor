@@ -52,8 +52,8 @@ Compare results of models, we choose bagging classifier because it has a better 
 
 
 ### Deployment
-Compare the evaluation of models
-Overlay a population heat map with the locations of the pumps
+1. Compare the evaluation of models
+2. Overlay a population heat map with the locations of the pumps
 
 
 ## Setup Instructions
