@@ -13,24 +13,25 @@ We found that the most broken wells are clustered near cities.
 3. The features we used:
     - amount_tsh - Total static head (amount water available to waterpoint)
     - gps_height - Altitude of the well
-        * installer - Organization that installed the well. Set NaN as 'others'
-        * wpt_name -  Name of the waterpoint if there is one
-        * num_private
-        * basin - Geographic water basin
-        * region - Geographic location
-        * population - Population around the well
-        * scheme_management - Who operates the waterpoint. Set NaN as 'others'
-        * permit - If the waterpoint is permitted. Set NaN as 'others'.
-        * extraction_type - The kind of extraction the waterpoint uses
-        * management_group - How the waterpoint is managed
-        * payment - What the water costs
-        * quality_group - The quality of the water
-        * source_class - The source of the water
-        * waterpoint_type_group - The kind of waterpoint
-        * date_recorded - The date the row was entered
-4. Adjust unreasonable values: gps_height, construction_year
-5. Consider performance and avoid overfitting. If the unique value of single feature is more than 50 and the number of one unique value is less than 500(< 1% records), we set the value as 'others'
-6. Parses categorical variables by one-hot encoding
+    - installer - Organization that installed the well. Set NaN as 'others'
+    - wpt_name -  Name of the waterpoint if there is one
+    - num_private
+    - basin - Geographic water basin
+    - region - Geographic location
+    - population - Population around the well
+    - scheme_management - Who operates the waterpoint. Set NaN as 'others'
+    - permit - If the waterpoint is permitted. Set NaN as 'others'.
+    - extraction_type - The kind of extraction the waterpoint uses
+    - management_group - How the waterpoint is managed
+    - payment - What the water costs
+    - quality_group - The quality of the water
+    - source_class - The source of the water
+    - waterpoint_type_group - The kind of waterpoint
+    - date_recorded - The date the row was entered
+4. Set ‘NaN’ to ‘others’
+5. Adjust unreasonable values: gps_height, construction_year
+6. Consider performance and avoid overfitting. If the unique value of single feature is more than 50 and the number of one unique value is less than 500(< 1% records), we set the value as 'others'
+7. Parses categorical variables by one-hot encoding
 
 
 ### Modeling
@@ -45,6 +46,7 @@ We found that the most broken wells are clustered near cities.
 1. Get recall score, f1 score, precision score, accuracy, and hamming loss. 
 2. Calculate mean cross validation.
 
+### Predict on test data
 
 
 ## Setup Instructions
