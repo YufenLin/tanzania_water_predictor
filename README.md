@@ -1,14 +1,16 @@
 # Tanzania water pumps predictor
-Classification model predicting the function of water pumps throughout Tanzania
+Use [Tanzanian Water Well Data](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/page/23/) to create a classification model predicting the function of water pumps throughout Tanzania
 
 ## Findings
-We found that the most broken wells are clustered near cities. 
+- Most broken pumps in big cities  located on the coast with high population density.
+- Elevation and population are the main predictors of model.
+- There are 14850 records in the test data, we predict 64% functional, 34% non functional, 2% functional needs repair.
 
 
 ## The Process
 
 ### Data Cleaning
-1. There are 59400 records in train data and 14850 records in test data.
+1. There are 59400 records in the train data and 14850 records in the test data.
 2. Predict the condition of water wells. There are three status: functional, non functional, and functional needs repair.
 3. The features we used:
     - amount_tsh - Total static head (amount water available to waterpoint)
@@ -30,7 +32,7 @@ We found that the most broken wells are clustered near cities.
     - date_recorded - The date the row was entered
 4. Set ‘NaN’ to ‘others’
 5. Adjust unreasonable values: gps_height, construction_year
-6. Consider performance and avoid overfitting. If the unique value of single feature is more than 50 and the number of one unique value is less than 500(< 1% records), we set the value as 'others'
+6. Consider performance and avoid overfitting. Only use top 50 values in each features, we set others as 'others'
 7. Parses categorical variables by one-hot encoding
 
 
@@ -46,7 +48,12 @@ We found that the most broken wells are clustered near cities.
 1. Get recall score, f1 score, precision score, accuracy, and hamming loss. 
 2. Calculate mean cross validation.
 
-### Predict on test data
+Compare results of models, we choose bagging classifier because it has a better cross-validation score and wasn’t computationally expensive.
+
+
+### Deployment
+Compare the evaluation of models
+Overlay a population heat map with the locations of the pumps
 
 
 ## Setup Instructions
