@@ -11,8 +11,8 @@ We found that the most broken wells are clustered near cities.
 1. There are 59400 records in train data and 14850 records in test data.
 2. Predict the condition of water wells. There are three status: functional, non functional, and functional needs repair.
 3. The features we used:
-        * amount_tsh - Total static head (amount water available to waterpoint)
-        * gps_height - Altitude of the well
+    - amount_tsh - Total static head (amount water available to waterpoint)
+    - gps_height - Altitude of the well
         * installer - Organization that installed the well. Set NaN as 'others'
         * wpt_name -  Name of the waterpoint if there is one
         * num_private
