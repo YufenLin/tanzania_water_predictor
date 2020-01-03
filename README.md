@@ -1,12 +1,16 @@
-# tanzania_water_predictor
+# Tanzania water pumps predictor
 Classification model predicting the function of water pumps throughout Tanzania
 
 ## Findings
+We found that the most broken wells are clustered near cities. 
 
-## THE PROCESS
+
+## The Process
 
 ### Data Cleaning
-    1. The features we used:
+1. There are 59400 records in train data and 14850 records in test data.
+2. Predict the condition of water wells. There are three status: functional, non functional, and functional needs repair.
+3. The features we used:
         * amount_tsh - Total static head (amount water available to waterpoint)
         * gps_height - Altitude of the well
         * installer - Organization that installed the well. Set NaN as 'others'
@@ -24,20 +28,22 @@ Classification model predicting the function of water pumps throughout Tanzania
         * source_class - The source of the water
         * waterpoint_type_group - The kind of waterpoint
         * date_recorded - The date the row was entered
-    2. There are 59400 records in train data and 14850 records in test data.
-    3. Set gps_height = 0 where gps_height < 0
-    4. Consider performance and avoid overfitting. If the unique value of one feature is more than 50 and the number of one unique value is less than 500(< 1% records), we set the value as 'others'
-    5. There are a lot of '0' values in construction_year. It is an unreasonable value for year of construction, so it casts '0' as 'unknown'. Set other years into decade bins. Set construction_year as categorical features.
-    6. Parses cateborical variables by OneHotEncoder
-    7. Writing data to Pickle file.
+4. Adjust unreasonable values: gps_height, construction_year
+5. Consider performance and avoid overfitting. If the unique value of single feature is more than 50 and the number of one unique value is less than 500(< 1% records), we set the value as 'others'
+6. Parses categorical variables by one-hot encoding
+
 
 ### Modeling
-    1. Dummy Classifier
-    2. Decision Tree Classifier
-    3. Bagging Classifier
-    4. Random Forest Classifier
-    5. KNeighbor Classifier
-    6. XGB Classifier
+1. Dummy Classifier
+2. Decision Tree Classifier
+3. Bagging Classifier
+4. Random Forest Classifier
+5. XGB Classifier
+6. GridSearchCV: search better parameter values for each model
+
+### Evaluation
+1. Get recall score, f1 score, precision score, accuracy, and hamming loss. 
+2. Calculate mean cross validation.
 
 
 
@@ -50,7 +56,7 @@ To download the necessary data, please run the following command:
 sh setup.sh
 ```
 
-### `tanz-water` conda environment
+## `tanz-water` conda environment
 
 This project relies on you using the [`environment.yml`](environment.yml) file to recreate the `tanz-water` conda environment. To do so, please run the following commands:
 
